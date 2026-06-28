@@ -8,9 +8,10 @@
  */
 
 /* ===== Jetson UART（ASCII 十六进制行协议，115200 8N1） ===== */
-#define CFG_JETSON_UART_PORT        UART_NUM_1
-#define CFG_JETSON_UART_TX_GPIO     17   /* TODO: 按实际接线确认 */
-#define CFG_JETSON_UART_RX_GPIO     18   /* TODO: 按实际接线确认 */
+/* COM 口（CH343P）桥接 UART0/GPIO43,44；console 已改走 USB-Serial-JTAG */
+#define CFG_JETSON_UART_PORT        UART_NUM_0
+#define CFG_JETSON_UART_TX_GPIO     43
+#define CFG_JETSON_UART_RX_GPIO     44
 #define CFG_JETSON_UART_BAUD        115200
 
 /* ===== 电机 RS485（Modbus RTU，19200 8N1，半双工） ===== */

@@ -37,11 +37,13 @@ ESP32-S3
 ## 2. 串口
 
 ```text
-UART
+UART0（GPIO43 TXD / GPIO44 RXD）
 115200 8N1
 ASCII 十六进制行协议
-与 Jetson 的 /dev/ttyTHS1 对接
+经板载 COM 口（CH343P）出，Jetson 侧枚举 /dev/ttyUSB0
 ```
+
+UART0 是 ESP32-S3 默认 console，要把它让给行协议：console 改走 USB-Serial-JTAG（USB 口，GPIO19/20），见 `sdkconfig.defaults`。改动后 build 端须删除已生成的 `sdkconfig` 让其按 defaults 重建，或 `idf.py menuconfig` 手动切到 USB-Serial-JTAG，否则旧 sdkconfig 仍把 console 钉在 UART0，log 文本会混进 AA55 帧。电机 RS485 走 UART2，与此无关。
 
 ## 3. 除草杆机构
 

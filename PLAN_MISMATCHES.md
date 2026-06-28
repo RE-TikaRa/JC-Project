@@ -81,9 +81,9 @@
 
 - 章节：一.2 串口、一.3 机构。
 - 缺失：未给 GPIO 引脚。
-- 采用设计：`app_config.h` 占位——Jetson UART1 TX17/RX18；RS485 UART2 TX4/RX5/DE6，均标 TODO。
-- 原因：无硬件接线图，占位保证可编译；现场按实际接线改一处即可。
-- 未来正式规范需改处：补引脚分配表（或留 app_config 维护）。
+- 采用设计：Jetson 链路已按 YD-ESP32-S3 原理图核实——板载 COM 口（CH343P）桥接 UART0 GPIO43(TX)/44(RX)，`app_config.h` 用 UART_NUM_0 + GPIO43/44，console 改走 USB-Serial-JTAG 让出 UART0；RS485 UART2 TX4/RX5/DE6 仍为占位 TODO。
+- 原因：COM 口一根 Type-C 即可连 Jetson，免接排针；RS485 暂无接线图，占位保证可编译。
+- 未来正式规范需改处：补 RS485 引脚分配表（或留 app_config 维护）。
 
 ## 10. Modbus 波特率：手册默认 19200 → 沿用 19200
 

@@ -1,0 +1,11 @@
+# 目标芯片：ESP32-S3（陇参卫士除草执行端）
+CONFIG_IDF_TARGET="esp32s3"
+
+# 控制台日志走默认 UART0，与 Jetson/电机的业务 UART 分开
+CONFIG_ESP_CONSOLE_UART_DEFAULT=y
+
+# FreeRTOS tick 1000Hz，便于动作保持等毫秒级计时
+CONFIG_FREERTOS_HZ=1000
+
+# 默认日志级别 INFO
+CONFIG_LOG_DEFAULT_LEVEL_INFO=y
